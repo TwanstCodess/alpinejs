@@ -30,7 +30,7 @@
     {title:'Mobile'},
     {title:'PC'},
     ],
-    count:-4,
+    add:''
 
 }">
     
@@ -52,13 +52,14 @@
 
             <h3 class="text-2xl my-6 mb-3 text-center rounded-xl bg-yellow-500">Item Order</h3>
             
-            <input type="text" class="border border-red-500 border-dashed w-50 mt-6 rounded" placeholder="Add New Item">
-            <button class="bg-green-700 text-white  p-1 rounded">Add</button>
+            <input type="text" x-model="add" class="border border-red-500 border-dashed w-50 mt-6 rounded" placeholder="Add New Item">
+            <button x-on:click="item.push({title:add})"  class="bg-green-700 text-white  p-1 rounded">Add</button>
+            
 
 
 <template x-for="order in item">
 <ul>
-    <li x-text="count++ + '.'+order.title" class="bg-blue-700 p-2 mt-4 rounded text-white"></li>
+    <li x-text="order.title" class="bg-blue-700 p-2 mt-4 rounded text-white"></li>
 </ul>
 
 </template>
