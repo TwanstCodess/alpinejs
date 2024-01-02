@@ -17,27 +17,51 @@
 <div class="container mx-auto mt-6 max-w-sm">
 
 <!-- alpine js div  -->
-<div x-data="{open: false
+<div x-data="{
+    
+    open: false,
+
+    search:'',
+    
+    item:[
+    {title:'t-shirt'},
+    {title:'Cap'},
+    {title:'Shose'},
+    {title:'Mobile'},
+    {title:'PC'},
+    ],
+    count:-4,
+
 }">
     
-    <button x-on:click="open = !open" class="bg-purple-700 p-6 text-white rounded-lg"> Click</button>
-
-
-
-<div x-show="open" x-cloak>
-    <p class="bg-gray-200 transition duration-1000 p-6 my-6 rounded">
-        Hello Twanst Developer Kurdish IM Fullstack Developer
-    </p>
-</div>
-<h1>Hello Twanst</h1>
+    <button x-on:click="open = !open" x-bind:class="open ? 'bg-red-800'  : 'bg-purple-700 ' " class="bg-purple-700 p-6 text-white rounded-lg"> Click</button>
 
 
 
 
+        <div x-show="open" x-cloak x-transition>
+            <p class="bg-gray-200 transition duration-1000 p-6 my-6 rounded">
+                Hello Twanst Developer Kurdish IM Fullstack Developer
+            </p>
+        </div>
+
+        <input type="text" x-model="search" class="border border-red-500 border-dashed w-full mt-6 rounded" placeholder="Search">
+
+            <p class="bg-red-500 p-4 text-white rounded mt-4" x-text="search"></p>
 
 
+            <h3 class="text-2xl my-6 mb-3 text-center rounded-xl bg-yellow-500">Item Order</h3>
+            
+            <input type="text" class="border border-red-500 border-dashed w-50 mt-6 rounded" placeholder="Add New Item">
+            <button class="bg-green-700 text-white  p-1 rounded">Add</button>
 
 
+<template x-for="order in item">
+<ul>
+    <li x-text="count++ + '.'+order.title" class="bg-blue-700 p-2 mt-4 rounded text-white"></li>
+</ul>
+
+</template>
 
 
 
